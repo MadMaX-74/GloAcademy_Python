@@ -1,3 +1,4 @@
 print('Как тебя зовут?')
 person_name = input()
-print('Привет,' + person_name)
+print('Привет,', person_name)
+print('Привет,' + ' ' + person_name)
