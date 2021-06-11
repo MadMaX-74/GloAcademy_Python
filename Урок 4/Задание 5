@@ -1,0 +1,19 @@
+#Это с просторов интернета
+from datetime import datetime, timedelta
+
+def GetTime():
+    sec = timedelta(seconds=int(input('Enter the number of seconds: ')))
+    d = datetime(1,1,1) + sec
+
+    print("HOURS:MIN:SEC")
+    print("%d:%d:%d" % (d.hour, d.minute, d.second))
+
+GetTime()
+
+#А это сам
+print('Введите количество секунд')
+n = int(input())
+h = n//3600
+m = int(n/60 - h*60)
+s = int((n - (m*60+h*3600)))
+print(n, 'секунд это -', h , 'часов', m, 'минут', s, 'секунд')
