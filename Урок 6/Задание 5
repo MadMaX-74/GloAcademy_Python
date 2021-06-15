@@ -1,5 +1,5 @@
 email = input('Введите вашу почту: ')
-if "@mail.ru" in email:
+if "@" and "." in email:
     print('Ввод корректный')
 else:
     print('Проверьте правильность ввода. Есть ошибка')
