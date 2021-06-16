@@ -8,5 +8,8 @@ if n >= 2:
             maximum = number
         elif number < minimum:
             minimum = number
+else:
+    number = int(input('Введите число: '))
+    minimum = maximum = number
 print(maximum)
 print(minimum)
