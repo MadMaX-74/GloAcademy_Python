@@ -1,13 +1,15 @@
-n = int(input('Введите натуральное число: '))
-count = 0
-
-for i in range(n):
-    number = int(input('Введите число: '))
-    if number % 2 != 0:
-        count += 1
-    else:
-        count += 2
-if count % 2 != 0:
-    print('yes')
+n = int(input('Введите число: '))
+maximum = n
+minimum = n
+if n >= 2:
+    for i in range(n-1):
+        number = int(input('Введите число: '))
+        if number > maximum:
+            maximum = number
+        elif number < minimum:
+            minimum = number
 else:
-    print('no')
+    number = int(input('Введите число: '))
+    minimum = maximum = number
+print(maximum)
+print(minimum)
