@@ -1,0 +1,13 @@
+n = int(input('Введите натуральное число: '))
+count = 0
+
+for i in range(n):
+    number = int(input('Введите число: '))
+    if number % 2 == 0:
+        count += 2
+    else:
+        count += 1
+if count%2==0:
+    print('yes')
+else:
+    print('no')
