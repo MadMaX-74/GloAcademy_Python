@@ -1,0 +1,12 @@
+n = int(input('Введите натуральное число: '))
+plus_digit = 0
+minus_digit = 0
+
+while n != 0:
+    if n > 0:
+        plus_digit += 1
+    elif n < 0:
+        minus_digit += 1
+    n = int(input('Введите натуральное число: '))
+
+print(plus_digit * minus_digit)
