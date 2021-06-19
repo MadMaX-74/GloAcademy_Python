@@ -1,0 +1,7 @@
+n = int(input('Введите число: '))
+total = 0
+
+for i in range(n+1):
+    if i == 5 or i % 10 == 5 or i % 100 == 5 or i % 1000 == 5:
+        total += 1
+print(total)
