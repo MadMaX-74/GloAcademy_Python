@@ -1,5 +1,5 @@
-n = input('введите символ: ')
-if 48 <= ord(n) <= 57:
+russian_symbol = input('введите символ: ')
+if 48 <= ord(russian_symbo) <= 57:
     print('Yes')
 else:
     print('no')
