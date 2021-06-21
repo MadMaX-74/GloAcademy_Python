@@ -1,0 +1,5 @@
+lastname = input('введите фамилию: ')
+name = input('введите имя: ')
+middle_name = input('введите отчество: ')
+
+print(lastname, name[:1]+'.' + middle_name[:1] +'.')
