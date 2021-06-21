@@ -1,7 +1,11 @@
 symbol_n = input('введите символ: ')
-if 65 <= ord(symbol_n) <= 90:
+upper_first = 65
+upper_last = 90
+lower_first = 97
+lower_last = 122
+if upper_first <= ord(symbol_n) <= upper_last:
     print(symbol_n.lower())
-if 97 <= ord(symbol_n) <= 122:
+if lower_first <= ord(symbol_n) <= lower_last:
     print(symbol_n.upper())
 else:
     print(symbol_n)
