@@ -1,0 +1,5 @@
+n = input('введите символ: ')
+if 48 <= ord(n) <= 57:
+    print('Yes')
+else:
+    print('no')
