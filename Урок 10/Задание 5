@@ -1,0 +1,6 @@
+first_symbol = input('введите первую латинскую букву: ')
+last_symbol = input('введите последнюю латинскую букву: ')
+if ord(first_symbol ) > ord(last_symbol):
+    first_symbol, last_symbol = last_symbol, first_symbol
+for i in range(ord(first_symbol ), ord(last_symbol) + 1):
+    print(f"{chr(i)}", end = " ")
