@@ -1,5 +1,7 @@
 number = input('введите символ: ')
-if 48 <= ord(number) <= 57:
+number_0_ascii = 48
+number_9_ascii = 57
+if number_0_ascii <= ord(number) <= number_9_ascii:
     print('Yes')
 else:
     print('no')
