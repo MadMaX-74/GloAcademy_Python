@@ -1,0 +1,6 @@
+a = input('Введите строку: ')
+num = ''
+for char in a:
+    if char.isdigit():
+        num = num + char
+print(num)
