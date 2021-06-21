@@ -1,0 +1,7 @@
+n = input('введите символ: ')
+if 65 <= ord(n) <= 90:
+    print(n.lower())
+if 97 <= ord(n) <= 122:
+    print(n.upper())
+else:
+    print(n)
