@@ -1,6 +1,6 @@
-a = input('Введите строку: ')
-num = ''
-for char in a:
+number_text = input('Введите строку: ')
+number = ''
+for char in number_text:
     if char.isdigit():
-        num = num + char
-print(num)
+        number = number + char
+print(number)
