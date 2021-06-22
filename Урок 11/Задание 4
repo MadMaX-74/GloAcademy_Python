@@ -1,0 +1,8 @@
+text = input('введите число:')
+text_arr = text.split(' ')
+counter = 0
+for num in text_arr:
+    if text_arr.count(num) > 1:
+        counter = counter + (int(text_arr.count(num)-1))
+
+print(int(counter/2))
