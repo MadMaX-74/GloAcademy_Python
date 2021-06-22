@@ -1,0 +1,4 @@
+the_way = 'D:\MyDocuments\Python\Courses\план обучения.txt'
+values = the_way.split('\\')
+string = '\n'.join(values)
+print(string)
