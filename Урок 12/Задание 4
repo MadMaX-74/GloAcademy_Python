@@ -1,0 +1,11 @@
+def delivery_price(number_of_shop):
+    price = 100
+    delivery = 0
+    if number_of_shop > 1:
+        delivery = number_of_shop * (price / 2) + 50
+    else:
+        delivery = price
+    print(int(delivery))
+
+
+delivery_price(int(input('Введите колличество заказа: ')))
