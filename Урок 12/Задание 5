@@ -1,0 +1,14 @@
+def star_date():
+    date_str = input('Введите дату: ').split('.')
+    date_num = []
+    for date in date_str:
+        date_num.append(int(date))
+    day = date_num[0] * date_num[1]
+    year = date_num[2] % 100
+    if day == year:
+        return True
+    else:
+        return False
+
+new_date = star_date()
+print(new_date)
