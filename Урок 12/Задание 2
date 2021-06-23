@@ -1,0 +1,12 @@
+def find_maximum():
+    number = input('Введите число: ').split(' ')
+    numbers = []
+    for num in number:
+        numbers.append(int(num))
+    maximum = max(numbers)
+    return maximum
+
+maximum_1 = find_maximum()
+maximum_2 = find_maximum()
+
+print(maximum_1*maximum_2)
