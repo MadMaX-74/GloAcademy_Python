@@ -1,11 +1,12 @@
-def digit_mult():
-    n = int(input('Введите число: '))
-    mult = 1
-    while n > 0:
-        digit = n % 10
-        mult = mult * digit
-        n = n // 10
-    print("Произведение:", mult)
+def number_sum():
+    num = int(input('Введите  число: '))
+    sum = 0
+    while num > 0:
+        digit = num % 10
+        sum = sum + digit
+        num = num // 10
+    return sum
+number_1 = number_sum()
+number_2 = number_sum()
 
-digit_mult()
-digit_mult()
+print(number_1*number_2)
