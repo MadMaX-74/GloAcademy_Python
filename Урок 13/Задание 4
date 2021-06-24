@@ -29,7 +29,7 @@ def start_game():
         user_input = input()
         if not is_valid(user_input, n):
             continue
-        user_number = int(user_input, n)
+        user_number = int(user_input)
 
         if secret_number > user_number:
             print('Загаданное число больше, чем введенное')
