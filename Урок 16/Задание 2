@@ -45,7 +45,7 @@ while not end_game(field):
         print("Введите номер строки и номер столбца")
         row = input()
         column = input()
-        if row.isdigit() or column.isdigit():
+        if row.isdigit() and column.isdigit():
             pass
         else:
             print('вы ввели не число')
