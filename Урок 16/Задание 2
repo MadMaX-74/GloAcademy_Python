@@ -46,20 +46,19 @@ while not end_game(field):
         row = input()
         column = input()
         if row.isdigit() or column.isdigit():
-            continue
+            pass
         else:
             print('вы ввели не число')
-
+            continue
         if int(row) > 3 or int(row) < 1:
-            continue
-        else:
             print('введите число в диапазоне от 1 до 3')
-        if int(column) > 3 or int(column) < 1:
             continue
-        else:
-            print('введите число в диапазоне от 1 до 3')
 
-    field[row - 1][column - 1] = current_symbol
+        if int(column) > 3 or int(column) < 1:
+            print('введите число в диапазоне от 1 до 3')
+            continue
+        break
+    field[int(row) - 1][int(column) - 1] = current_symbol
     if current_symbol == "X":
         current_symbol = '0'
     else:
