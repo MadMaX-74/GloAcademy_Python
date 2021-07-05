@@ -47,7 +47,7 @@ def my_Tester():
     print(f'{user_name}, -колличество правильных ответов: , {result}')
     file.write(user_name + ' ')
     file.write(str(count_right_answers) + ' ')
-    file.write(result + '\n ')
+    file.write(result + '\n')
     file.close()
 
 while True:
@@ -61,6 +61,6 @@ while True:
 table_result = input('Вывести таблицу результатов? да или нет')
 if table_result.lower() == 'да':
     file_table = open('my_tester_results.txt', 'r')
-    table_result = file_table.readline().strip('\n')
+    table_result = file_table.read()
     print(table_result)
     file_table.close()
