@@ -62,5 +62,6 @@ table_result = input('Вывести таблицу результатов? да
 if table_result.lower() == 'да':
     file_table = open('my_tester_results.txt', 'r')
     table_result = file_table.read()
+    print(f'ИМЯ  Кол-во правильных ответов  Результат')
     print(table_result)
     file_table.close()
