@@ -27,19 +27,21 @@ def my_Tester():
         print(f'Вопрос №{i+1}')
         random_index = random.randint(0, len(questions) - 1)
         print(questions[random_index])
-        user_answer = input()
-        if user_answer.isdigit():
-            pass
-        else:
-            print('Пожалуйста введите число')
-            continue
+        while True:
+            user_answer = input()
+            if user_answer.isdigit():
+                pass
+            else:
+                print('Пожалуйста введите число')
+                continue
+            break
         right_answer = answers[random_index]
-        if user_answer == right_answer:
+        if int(user_answer) == right_answer:
             count_right_answers += 1
         questions.pop(random_index)
         answers.pop(random_index)
 
-    result = calculate_result(count_right_answers, user_name)
+    result = calculate_result(count_right_answers)
     print('Количество правильных ответов =', count_right_answers)
     print(f'{user_name}, -колличество правильных ответов: , {result}')
 
