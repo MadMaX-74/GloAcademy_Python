@@ -45,9 +45,7 @@ def my_Tester():
     result = calculate_result(count_right_answers)
     print('Количество правильных ответов =', count_right_answers)
     print(f'{user_name}, -колличество правильных ответов: , {result}')
-    file.write(user_name + ' ')
-    file.write(str(count_right_answers) + ' ')
-    file.write(result + '\n')
+    file.write(f'{user_name}-{count_right_answers}-{result}\n')
     file.close()
 
 while True:
