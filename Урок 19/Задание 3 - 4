@@ -19,7 +19,6 @@ def get_answers():
     return answers
 
 def my_Tester():
-    file = open('my_tester_results.txt', 'a')
     user_name = input('Как вас зовут? ')
     questions = get_questions()
     answers = get_answers()
@@ -45,7 +44,8 @@ def my_Tester():
     result = calculate_result(count_right_answers)
     print('Количество правильных ответов =', count_right_answers)
     print(f'{user_name}, -колличество правильных ответов: , {result}')
-    file.write(f'{user_name}-{count_right_answers}-{result}\n')
+    file = open('my_tester_results.txt', 'a')
+    file.write(f'{user_name} {count_right_answers} {result}\n')
     file.close()
 
 while True:
@@ -59,7 +59,12 @@ while True:
 table_result = input('Вывести таблицу результатов? да или нет')
 if table_result.lower() == 'да':
     file_table = open('my_tester_results.txt', 'r')
-    table_result = file_table.read()
-    print(f'ИМЯ  Кол-во правильных ответов  Результат')
-    print(table_result)
+    name = 'Имя'
+    count_right_answers = 'Кол-во правильных ответов'
+    result = 'Результат'
+    print(f'{name:10}{count_right_answers:30}{result:15}')
+    for string in file_table:
+        string = string.strip().strip('\n')
+        string_line = string.split(' ')
+        print(f'{string_line[0]:10}{string_line[1]:30}{string_line[2]:15}')
     file_table.close()
