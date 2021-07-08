@@ -56,11 +56,11 @@ def show_user_results(table_result):
             string_line = string.split(' ')
             print(f'{string_line[0]:15}{string_line[1]:30}{string_line[2]:15}')
         file_table.close()
-
+user_result = UsersResultStorage()
 while True:
     questions = qs.get_all()
     test_player = User(input('Как вас зовут? '))
-    user_result = UsersResultStorage()
+
     count_questions = len(questions)
     for i in range(len(questions)):
         print(f'Вопрос №{i + 1}')
