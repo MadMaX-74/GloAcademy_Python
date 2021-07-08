@@ -60,6 +60,7 @@ def show_user_results(table_result):
 while True:
     questions = qs.get_all()
     test_player = User(input('Как вас зовут? '))
+    user_result = UsersResultStorage()
     count_questions = len(questions)
     for i in range(len(questions)):
         print(f'Вопрос №{i + 1}')
@@ -79,7 +80,6 @@ while True:
         questions.pop(random_index)
 
     test_player.calculate_result(count_questions)
-    user_result = UsersResultStorage()
     user_result.add_user(test_player)
     print('Количество правильных ответов =', test_player.count_right_answers)
     print(f'{test_player.user_name}, -колличество правильных ответов: , {test_player.result}')
