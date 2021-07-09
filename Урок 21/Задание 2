@@ -54,11 +54,10 @@ class UsersResultStorage:
     def get_all(self):
         file_name = 'result.txt'
         file_provider = FileProvider()
-        data = file_provider.get(file_name)
+        data = file_provider.get(file_name).strip('\n')
         data = data.split('\n')
         users = []
         for string in data:
-            string = string.strip('\n')
             string_line = string.split(' ')
             player = User(string_line[0], string_line[1], string_line[2])
             users.append(player)
