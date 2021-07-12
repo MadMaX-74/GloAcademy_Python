@@ -102,6 +102,7 @@ def show_user_results(table_result):
         users = user_result.get_all()
         for player in users:
             print(f'{player.name:15}{player.count_right_answers:30}{player.result:15}')
+
 def add_new_question():
     text = input('Введите текст вопроса \n')
     answer = int(input('Введите ответ \n'))
@@ -138,8 +139,8 @@ while True:
     print(f'{user.name}, -колличество правильных ответов: , {user.result}')
     user_result.safe(user)
 
-    user_answer = input('Хотите добавить новый вопрос? y/n ')
-    if user_answer.lower == 'y':
+    user_question = input('Хотите добавить новый вопрос? y/n ')
+    if user_question.lower() == 'y':
         add_new_question()
 
     continue_game = input('Повторим? y/n ')
