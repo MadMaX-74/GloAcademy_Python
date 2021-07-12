@@ -23,7 +23,7 @@ class Question:
 
 
 class QuestionStrorage:
-    def __init__(self):
+    def get_all(self):
         file_name = 'question.txt'
         file_provider = FileProvider()
         if file_provider.exists(file_name):
@@ -48,9 +48,9 @@ class QuestionStrorage:
             for char in data:
                 info = char.text+'#'+str(char.answer)+'\n'
                 file_provider.append(file_name, info)
-                
-    def get_all(self):
         return self.question
+
+
     def add_question(self, question):
         file_name = 'question.txt'
         file_provider = FileProvider()
@@ -139,7 +139,7 @@ while True:
     print(f'{user.name}, -колличество правильных ответов: , {user.result}')
     user_result.safe(user)
 
-    user_question = input('Хотите добавить новый вопрос? y/n ')
+    user_question = input('Хотите добавить новый вопрос? ')
     if user_question.lower() == 'y':
         add_new_question()
 
@@ -149,5 +149,5 @@ while True:
     else:
         break
 
-table_result = input('Вывести таблицу результатов? да или нет')
+table_result = input('Вывести таблицу результатов? y/n ')
 show_user_results(table_result)
