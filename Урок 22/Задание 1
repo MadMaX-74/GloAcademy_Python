@@ -28,7 +28,7 @@ class QuestionStrorage:
         file_provider = FileProvider()
         if file_provider.exists(file_name):
             self.question = []
-            file_data = file_provider.get(file_name)
+            file_data = file_provider.get(file_name).strip('\n')
             file_data = file_data.split('\n')
             for data in file_data:
                 data_line = data.split('#')
@@ -45,14 +45,17 @@ class QuestionStrorage:
                 Question('5 свечей горело, 2 потухли. Сколько свечей осталось', 2)
             ]
             self.question = data
-            file_name = 'question.txt'
-            file_provider = FileProvider()            
             for char in data:
                 info = char.text+'#'+str(char.answer)+'\n'
                 file_provider.append(file_name, info)
                 
     def get_all(self):
         return self.question
+    def add_question(self, question):
+        file_name = 'question.txt'
+        file_provider = FileProvider()
+        data = f'{question.text}#{question.answer}\n'
+        file_provider.append(file_name, data)
 
 qs = QuestionStrorage()
 
@@ -88,8 +91,9 @@ class UsersResultStorage:
             users.append(player)
         return users
 
+
 def show_user_results(table_result):
-    if table_result.lower() == 'да':
+    if table_result.lower() == 'y':
         name = 'Имя'
         count_right_answers = 'Кол-во правильных ответов'
         result = 'Результат'
@@ -98,6 +102,12 @@ def show_user_results(table_result):
         users = user_result.get_all()
         for player in users:
             print(f'{player.name:15}{player.count_right_answers:30}{player.result:15}')
+def add_new_question():
+    text = input('Введите текст вопроса \n')
+    answer = int(input('Введите ответ \n'))
+    new_question = Question(text, answer)
+    qs.add_question(new_question)
+
 
 user_result = UsersResultStorage()
 while True:
@@ -127,6 +137,10 @@ while True:
     print('Количество правильных ответов =', user.count_right_answers)
     print(f'{user.name}, -колличество правильных ответов: , {user.result}')
     user_result.safe(user)
+
+    user_answer = input('Хотите добавить новый вопрос? y/n ')
+    if user_answer.lower == 'y':
+        add_new_question()
 
     continue_game = input('Повторим? y/n ')
     if (continue_game.lower() == 'y'):
