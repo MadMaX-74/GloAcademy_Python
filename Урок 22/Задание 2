@@ -1,7 +1,8 @@
-#_*_ coding: utf-8 -*-
+# _*_ coding: utf-8 -*-
 import random
 import os
 import jsonpickle
+
 
 class FileProvider:
     def get(self, path):
@@ -27,6 +28,8 @@ class FileProvider:
         file = open(path, 'w')
         file.write("")
         file.close()
+
+
 file_provider = FileProvider()
 
 
@@ -39,6 +42,7 @@ class Question:
 class QuestionStrorage:
     def __init__(self):
         self.file_name = 'questions.json'
+
     def get_all(self):
         if not file_provider.exists(self.file_name):
             questions = [
@@ -54,11 +58,10 @@ class QuestionStrorage:
         questions = jsonpickle.decode(data)
         return questions
 
-
     def safe_questions(self, questions):
         json_data = jsonpickle.encode(questions)
         file_provider.writelines(self.file_name, json_data)
-    
+
     def add_question(self, question):
         questions = self.get_all()
         questions.append(question)
@@ -69,37 +72,49 @@ class QuestionStrorage:
         questions.pop(index)
         self.safe_questions(questions)
 
+
 qs = QuestionStrorage()
+
 
 class User:
     def __init__(self, name, count_right_answers=0, result='Неизвестно'):
         self.name = name
         self.count_right_answers = count_right_answers
         self.result = result
+
     def inc_righta_answer(self):
-        self.count_right_answers +=1
+        self.count_right_answers += 1
+
     def calculate_result(self, count_questions):
         right_answers_percents = self.count_right_answers * 100 // count_questions
         results = ['Идиот', 'Кретин', 'Дурак', 'Нормальный', 'Талант', 'Гений']
         self.result = results[right_answers_percents // 20]
         return self.result
 
+
 class UsersResultStorage:
     def __init__(self):
         self.file_name = 'result.json'
-    def safe(self, user):
-        json_data = jsonpickle.encode(user)
-        file_provider.append(self.file_name, json_data)
 
     def get_all(self):
+        if not file_provider.exists(self.file_name):
+            users = []
+            self.safe(users)
+
         data = file_provider.get(self.file_name)
-        user_result = jsonpickle.decode(data)
-        return user_result
+        users = jsonpickle.decode(data)
+        return users
 
+    def safe(self, users):
+        json_data = jsonpickle.encode(users)
+        file_provider.writelines(self.file_name, json_data)
 
+    def add_user(self, user):
+        users = self.get_all()
+        questions.append(user)
+        self.safe(users)
 
 def show_user_results(table_result):
-    users_list = ''
     if table_result.lower() == 'y':
         name = 'Имя'
         count_right_answers = 'Кол-во правильных ответов'
@@ -110,24 +125,27 @@ def show_user_results(table_result):
         for player in users_list:
             print(f'{player.name:15}{player.count_right_answers:30}{player.result:15}')
 
+
 def add_new_question():
     text = input('Введите текст вопроса \n')
     answer = int(input('Введите ответ \n'))
     new_question = Question(text, answer)
     qs.add_question(new_question)
 
+
 def remove_question():
     question = qs.get_all()
     while True:
         print('Введите номер вопроса который надо удалить')
         for i in range(len(question)):
-            print(f'{i+1}.{question[i].text}')
+            print(f'{i + 1}.{question[i].text}')
         user_answer = int(input())
         if user_answer < 1 or user_answer > len(question):
             continue
         qs.remove(user_answer - 1)
         print(f'Вопрос под номером {user_answer} удален')
         break
+
 
 user_result = UsersResultStorage()
 
@@ -158,7 +176,7 @@ while True:
 
     print('Количество правильных ответов =', user.count_right_answers)
     print(f'{user.name}, -колличество правильных ответов: , {user.result}')
-    user_result.safe(user)
+    user_result.add_user(user)
 
     user_question = input('Хотите добавить новый вопрос? ')
     if user_question.lower() == 'y':
