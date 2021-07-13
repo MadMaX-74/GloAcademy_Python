@@ -111,7 +111,7 @@ class UsersResultStorage:
 
     def add_user(self, user):
         users = self.get_all()
-        questions.append(user)
+        users.append(user)
         self.safe(users)
 
 def show_user_results(table_result):
