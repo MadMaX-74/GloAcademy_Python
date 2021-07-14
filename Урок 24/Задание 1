@@ -131,13 +131,13 @@ while True:
     display.fill('white')
     for ball in balls:
         ball.move()
-        if ball.radius == ball.center_x:
+        if ball.radius >= ball.center_x:
             count_left += 1
-        if ball.radius == ball.center_y:
+        if ball.radius >= ball.center_y:
             count_top += 1
-        if width - ball.radius == ball.center_x:
+        if width - ball.radius <= ball.center_x:
             count_right += 1
-        if height - ball.radius == ball.center_y:
+        if height - ball.radius <= ball.center_y:
             count_down += 1
     string_left = (f'Стукнулось о левую стенку {count_left}')
     string_top = (f'Стукнулось о верхнюю стенку {count_top}')
