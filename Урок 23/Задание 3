@@ -1,6 +1,7 @@
 import pygame
 import random
 import time
+import sys
 
 class Ball:
     def __init__(self, display):
@@ -35,6 +36,11 @@ class Ball:
     def check_balls(self, width, height):
         if (self.center_x <= (width - self.radius) and self.center_x >= self.radius) and (
                 self.center_y <= (height - self.radius) and self.center_y >= self.radius):
+            return True
+
+    def check_coords(self, width, height):
+        x, y = pygame.mouse.get_pos()
+        if ball.check_balls(width, height) and (x - self.center_x) ** 2 + (y - self.center_y) ** 2 < self.radius ** 2:
             return True
 
 class RandomPointBall(Ball):
@@ -91,21 +97,20 @@ while True:
     for event in event_list:
         if event.type == pygame.QUIT:
             pygame.quit()
+            sys.exit()
 
 
         if event.type == pygame.MOUSEBUTTONDOWN:
 
             for ball in balls:
-
-                x, y = pygame.mouse.get_pos()
-                if ball.check_balls(width, height) and (x - ball.center_x)**2 + (y - ball.center_y)**2 < ball.radius**2:
+                if ball.check_coords(width, height):
                     ball.stop()
                     count += 1
                 string = (f'Шаров поймано {count}')
                 screen = pygame.display.set_mode([700, 300])
-                screen.fill('Red')
+                screen.fill('white')
                 font = pygame.font.SysFont('couriernew', 40)
-                text = font.render(str(string), True, 'white')
+                text = font.render(str(string), True, 'red')
                 screen.blit(text, (50, 50))
     for ball in balls:
         ball.move()
