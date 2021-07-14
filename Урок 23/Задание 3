@@ -107,7 +107,7 @@ while True:
                     ball.stop()
                     count += 1
                 string = (f'Шаров поймано {count}')
-                screen = pygame.display.set_mode([700, 300])
+                screen = pygame.display.set_mode([700, 400])
                 screen.fill('white')
                 font = pygame.font.SysFont('couriernew', 40)
                 text = font.render(str(string), True, 'red')
